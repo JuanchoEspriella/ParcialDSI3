@@ -35,19 +35,4 @@ export class productoservice {
     return this.http.delete<void>(this.url + '/delete/{id}' + id);
   }
 
-
-  comprarPorId(id: number, cantidad:number): Observable<producto> {
-    return this.http.put<producto>(this.url + '/comprar/{id}/{cantidad}' + id, cantidad, {
-      headers: this.headers(),
-    });
-  }
-  actualizarPorId(id: number): Observable<producto> {
-    return this.http.put<producto>(this.url + '/update/{id}' + id, {
-      headers: this.headers(),
-    });
-  }
-  eliminarPorId(id: number): Observable<void> {
-    return this.http.delete<void>(this.url + '/delete/{id}' + id);
-  }
-
 }
