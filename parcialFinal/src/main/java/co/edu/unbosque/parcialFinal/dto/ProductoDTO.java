@@ -6,7 +6,7 @@ public class ProductoDTO {
 	
 	private long id;
 	private String nombre;
-	private long precio;
+	private double precio;
 	private int stock;
 	private boolean disponible;
 	private String urlImagen;
@@ -44,11 +44,11 @@ public class ProductoDTO {
 		this.nombre = nombre;
 	}
 
-	public long getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(long precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 
