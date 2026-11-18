@@ -1,7 +1,6 @@
 <div class="container py-5">
   <div class="row">
 
-
     <div class="col-12 col-lg-4 mb-4">
       <div class="card shadow">
         <div class="card-body p-4">
@@ -33,25 +32,33 @@
             </div>
 
             <div class="mb-3">
+
               <label for="stock" class="form-label">ID</label>
               <input type="number" id="stock" class="form-control" formControlName="id">
               <small class="text-danger" *ngIf="form.get('id')?.invalid && form.get('id')?.touched">
                 Debe meter su ID del producto
+
+              <label for="urlImagen" class="form-label">URL de la imagen de su producto</label>
+              <input type="text" id="urlImagen" class="form-control" formControlName="urlImagen">
+              <small class="text-danger" *ngIf="form.get('urlImagen')?.invalid && form.get('urlImagen')?.touched">
+                La URL es obligatoria para ver su producto.
+
               </small>
             </div>
 
             <div class="mb-3">
-              <label for="nombre" class="form-label">URL de la imagen de su producto</label>
-              <input type="text" id="nombre" class="form-control" formControlName="urlImagen">
-              <small class="text-danger" *ngIf="form.get('urlImagen')?.invalid && form.get('urlImagen')?.touched">
-               La url es obligatoria para ver su producto
-              </small>
+              <label for="tipo" class="form-label">Tipo</label>
+              <select id="tipo" class="form-select" formControlName="tipo">
+                <option value="fruta">Fruta</option>
+                <option value="verdura">Verdura</option>
+              </select>
             </div>
 
             <div class="mb-3 form-check">
               <input type="checkbox" id="disponible" class="form-check-input" formControlName="disponible">
               <label for="disponible" class="form-check-label">Está disponible</label>
             </div>
+
 
             <div class="mb-3">
               <label for="nombre" class="form-label">Es FRUTA o VERDURA (Solo mayusculas)?</label>
@@ -60,6 +67,7 @@
                Es obligatorio especificar el tipo
               </small>
             </div>
+
 
             <button type="submit" class="btn btn-primary w-100">Crear producto</button>
           </form>
@@ -71,32 +79,41 @@
       </div>
     </div>
 
-
     <div class="col-12 col-lg-8">
       <div class="card shadow">
         <div class="card-body p-4">
           <h2 class="mb-4">Productos registrados ({{ productos.length }})</h2>
 
           <div class="table-responsive">
-            <table class="table table-hover mb-0">
+            <table class="table table-hover align-middle mb-0">
               <thead>
               <tr>
+                <th>Imagen</th>
+                <th>ID</th>
                 <th>Nombre</th>
+                <th>Tipo</th>
                 <th>Precio</th>
                 <th>Stock</th>
                 <th>Disponible</th>
-                <th>ID</th>
-                <th>Tipo</th>
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let p of productos">
+                <td>
+                  <img
+                    [src]="p.urlImagen || 'assets/imagen-por-defecto.png'"
+                    [alt]="p.nombre"
+                    (error)="$any($event.target).src = 'assets/imagen-por-defecto.png'"
+                    class="rounded"
+                    style="width: 55px; height: 55px; object-fit: cover;"
+                  />
+                </td>
+                <td>{{ p.id }}</td>
                 <td>{{ p.nombre }}</td>
+                <td>{{ p.tipo }}</td>
                 <td>{{ p.precio }}</td>
                 <td>{{ p.stock }}</td>
                 <td>{{ p.disponible ? 'Sí' : 'No' }}</td>
-                <td>{{p.id}}</td>
-                <td>{{p.tipo}}</td>
               </tr>
               </tbody>
             </table>
@@ -109,16 +126,3 @@
 
   </div>
 </div>
-
-<!-- if@(producto) {
- <div>
- <h2>{{productos.length}}</h2>
- <img
- [src]="producto.imagenUrl"
- [alt]="producto.titulo"
- (error)="producto.imagenUrl='assets/imagen-por-defecto.png"/>
- </div>
- }@else {
-   <p> Cargando...</p>
-}
- -->

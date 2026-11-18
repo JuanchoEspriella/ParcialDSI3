@@ -24,11 +24,14 @@ export class productoservice {
   private headers(): HttpHeaders {
     return new HttpHeaders({ Authorization: 'Bearer ' + localStorage.getItem('token') });
   }
-  comprarPorId(id: number, cantidad:number): Observable<producto> {
-    return this.http.put<producto>(this.url + '/comprar/{id}/{cantidad}' + id, cantidad, {
+
+  comprarPorId(id: number, cantidad: number): Observable<string> {
+    return this.http.put(this.url + '/comprar/' + id + '/' + cantidad, null, {
       headers: this.headers(),
+      responseType: 'text',
     });
   }
+
   actualizarPorId(id: number): Observable<producto> {
     return this.http.put<producto>(this.url + '/update/{id}' + id, {
       headers: this.headers(),

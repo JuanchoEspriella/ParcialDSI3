@@ -19,7 +19,6 @@ export class Productocomponent implements OnInit {
     stock: new FormControl(0, [Validators.required, Validators.min(0)]),
     disponible: new FormControl(true),
     tipo: new FormControl('', Validators.required),
-    id: new FormControl(0, [Validators.required, Validators.min(1)]),
     urlImagen: new FormControl('', Validators.required),
   });
 
@@ -42,6 +41,7 @@ export class Productocomponent implements OnInit {
       },
     });
   }
+
 
   guardar(): void {
     this.mensaje = '';

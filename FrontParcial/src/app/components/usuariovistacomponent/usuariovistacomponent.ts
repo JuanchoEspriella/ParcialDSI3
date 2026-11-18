@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { productoservice } from '../../services/productoservice';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { producto } from '../../models/producto';
@@ -9,24 +9,18 @@ import { producto } from '../../models/producto';
   styleUrl: './usuariovistacomponent.css',
   templateUrl: './usuariovistacomponent.html',
 })
-export class Usuariovistacomponent {
+export class Usuariovistacomponent implements OnInit {
   private service = inject(productoservice);
   private cd = inject(ChangeDetectorRef);
-
-  form = new FormGroup({
-    nombre: new FormControl('', Validators.required),
-    precio: new FormControl(0, [Validators.required, Validators.min(1)]),
-    stock: new FormControl(0, [Validators.required, Validators.min(0)]),
-    fechaVencimiento: new FormControl<Date | null>(null, Validators.required),
-    disponible: new FormControl(true),
-    tipo: new FormControl('', Validators.required),
-    id: new FormControl(0, [Validators.required, Validators.min(1)]),
-    urlImagen: new FormControl('', Validators.required),
-  });
 
   productos: producto[] = [];
   mensaje = '';
   exito = false;
+
+  form = new FormGroup({
+    id: new FormControl<number | null>(null, [Validators.required, Validators.min(1)]),
+    cantidad: new FormControl<number>(1, [Validators.required, Validators.min(1)]),
+  });
 
   ngOnInit(): void {
     this.cargarProductos();
@@ -45,6 +39,28 @@ export class Usuariovistacomponent {
   }
 
   comprarproductos(): void {
-    this.service.mostrar().subscribe({})
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    const id = Number(this.form.value.id);
+    const cantidad = Number(this.form.value.cantidad);
+
+    this.service.comprarPorId(id, cantidad).subscribe({
+      next: () => {
+        this.exito = true;
+        this.mensaje = 'Producto comprado correctamente.';
+        this.form.reset({ id: null, cantidad: 1 });
+        this.cargarProductos();
+        this.cd.detectChanges();
+      },
+      error: (err) => {
+        console.error(err);
+        this.exito = false;
+        this.mensaje = 'No se pudo comprar el producto. Verifica el stock disponible.';
+        this.cd.detectChanges();
+      },
+    });
   }
 }

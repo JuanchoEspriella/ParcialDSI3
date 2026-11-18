@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { usuario } from '../../models/usuario';
 import { usuarioservice } from '../../services/usuarioservice';
+import { producto } from '../../models/producto';
 
 @Component({
   selector: 'app-usuariocomponent',
@@ -27,3 +28,5 @@ export class Usuariocomponent implements OnInit {
     });
   }
 }
+
+
