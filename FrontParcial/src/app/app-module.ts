@@ -10,6 +10,7 @@ import { Footercomponent } from './components/footercomponent/footercomponent';
 import { Admincomponent } from './components/admincomponent/admincomponent';
 import { Usuariocomponent } from './components/usuariocomponent/usuariocomponent';
 import { Productocomponent } from './components/productocomponent/productocomponent';
+import { Simpsoncomponent } from './components/simpsoncomponent/simpsoncomponent';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { Productocomponent } from './components/productocomponent/productocompon
     Admincomponent,
     Usuariocomponent,
     Productocomponent,
+    Simpsoncomponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideBrowserGlobalErrorListeners()],
