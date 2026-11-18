@@ -88,8 +88,9 @@
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Stock</th>
-                <th>Vencimiento</th>
                 <th>Disponible</th>
+                <th>ID</th>
+                <th>Tipo</th>
               </tr>
               </thead>
               <tbody>
@@ -97,8 +98,9 @@
                 <td>{{ p.nombre }}</td>
                 <td>{{ p.precio }}</td>
                 <td>{{ p.stock }}</td>
-                <td>{{ p.fechaVencimiento }}</td>
                 <td>{{ p.disponible ? 'Sí' : 'No' }}</td>
+                <td>{{p.id}}</td>
+                <td>{{p.tipo}}</td>
               </tr>
               </tbody>
             </table>

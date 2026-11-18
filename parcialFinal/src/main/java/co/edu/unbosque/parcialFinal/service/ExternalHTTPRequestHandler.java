@@ -9,6 +9,7 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -17,6 +18,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import co.edu.unbosque.parcialFinal.dto.SimpsonDTO;
+
 public class ExternalHTTPRequestHandler {
 
 	private static final HttpClient HTTP_CLIENT = HttpClient.newBuilder()
@@ -24,6 +27,54 @@ public class ExternalHTTPRequestHandler {
 			.followRedirects(HttpClient.Redirect.NORMAL)
 			.connectTimeout(Duration.ofSeconds(10))
 			.build();
+
+	
+	
+	
+	
+	
+	public static List<SimpsonDTO> doGetAndConvertToDtoList(String url) {
+		HttpRequest request = HttpRequest.newBuilder().GET().uri(URI.create(url))
+				.header("Content-Type", "application/json").build();
+
+		HttpResponse<String> response = null;
+		try {
+			response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		String json = response.body();
+		List<SimpsonDTO> list = Arrays.asList(new GsonBuilder().create().fromJson(json, SimpsonDTO.class));
+
+		return list;
+
+	}
+	
+	public static <T> T doGetAndConvertToDto(String url, Class<T> responseType) {
+	    HttpRequest request = HttpRequest.newBuilder()
+	            .GET()
+	            .uri(URI.create(url))
+	            .header("Accept", "application/json")
+	            .build();
+
+	    try {
+	        HttpResponse<String> response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
+
+	        if (response.statusCode() != 200) {
+	            throw new RuntimeException("Error al consultar la API externa. Código HTTP: " + response.statusCode());
+	        }
+
+	        return new GsonBuilder().create().fromJson(response.body(), responseType);
+
+	    } catch (IOException e) {
+	        throw new RuntimeException("Error de conexión con la API externa", e);
+	    } catch (InterruptedException e) {
+	        Thread.currentThread().interrupt();
+	        throw new RuntimeException("La petición HTTP fue interrumpida", e);
+	    }
+	}
 
 	
 	public static HttpResponse<String> ejecutarGet(String url) {

@@ -42,6 +42,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/lossinso").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                 .requestMatchers("/api/productos/**", "/api/productos/getall").hasAnyRole("USER", "ADMIN")
                 .requestMatchers("/user/getall", "/user/count", "/user/exists/**", "/user/getbyid/**").hasAnyRole("USER", "ADMIN")
