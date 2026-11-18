@@ -14,24 +14,22 @@ export class Productocomponent {
   private service = inject(productoservice);
   private cd = inject(ChangeDetectorRef);
 
-
   form = new FormGroup({
     nombre: new FormControl('', Validators.required),
     precio: new FormControl(0, [Validators.required, Validators.min(1)]),
     stock: new FormControl(0, [Validators.required, Validators.min(0)]),
-    fechaVencimiento: new FormControl('', Validators.required),
+    fechaVencimiento: new FormControl<Date | null>(null, Validators.required),
     disponible: new FormControl(true),
   });
 
   mensaje = '';
   exito = false;
 
-
   guardar(): void {
     this.mensaje = '';
 
     if (this.form.invalid) {
-      this.form.markAllAsTouched(); // salta la excep67
+      this.form.markAllAsTouched();
       return;
     }
 
@@ -45,12 +43,13 @@ export class Productocomponent {
           nombre: '',
           precio: 0,
           stock: 0,
-          fechaVencimiento: '',
+          fechaVencimiento: null,
           disponible: true,
         });
         this.cd.detectChanges();
       },
-      error: () => {
+      error: (err) => {
+        console.error(err);
         this.exito = false;
         this.mensaje = 'No se pudo crear el producto.';
         this.cd.detectChanges();
