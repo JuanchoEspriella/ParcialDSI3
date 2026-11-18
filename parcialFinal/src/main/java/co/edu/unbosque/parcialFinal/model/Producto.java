@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name = "productos")
+@Table (name = "productovichs")
 public class Producto {
 	
 	
@@ -26,7 +26,7 @@ public class Producto {
 	private double precio;
 	private int stock;
 	private LocalDate fechaVencimiento;
-	private boolean isDisponible;
+	private boolean disponible;
 	
 	public Producto() {
 		// TODO Auto-generated constructor stub
@@ -73,12 +73,14 @@ public class Producto {
 	}
 
 	public boolean isDisponible() {
-		return isDisponible;
+		return disponible;
 	}
 
-	public void setDisponible(boolean isDisponible) {
-		this.isDisponible = isDisponible;
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
 	}
+
+	
 
 	
 	
