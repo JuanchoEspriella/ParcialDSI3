@@ -5,6 +5,7 @@ import { Registercomponent } from './components/registercomponent/registercompon
 import { Admincomponent } from './components/admincomponent/admincomponent';
 import { Usuariocomponent } from './components/usuariocomponent/usuariocomponent';
 import { Productocomponent} from './components/productocomponent/productocomponent';
+import{Usuariovistacomponent} from './components/usuariovistacomponent/usuariovistacomponent';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'admin', component: Admincomponent },
   { path: 'usuarios', component: Usuariocomponent },
   { path: 'productos', component: Productocomponent },
+  { path: 'usuariovista', component: Usuariovistacomponent },
   { path: '**', redirectTo: 'inicio' },
 ];
 

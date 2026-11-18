@@ -13,18 +13,10 @@ export class Usuariovistacomponent {
   private service = inject(productoservice);
   private cd = inject(ChangeDetectorRef);
 
-  form = new FormGroup({
-    nombre: new FormControl('', Validators.required),
-    precio: new FormControl(0, [Validators.required, Validators.min(1)]),
-    stock: new FormControl(0, [Validators.required, Validators.min(0)]),
-    fechaVencimiento: new FormControl<Date | null>(null, Validators.required),
-    disponible: new FormControl(true),
-    tipo: new FormControl('', Validators.required),
-    id: new FormControl(0, [Validators.required, Validators.min(1)]),
-    urlImagen: new FormControl('', Validators.required),
-  });
 
   productos: producto[] = [];
+  cantidad:number = 0;
+  id: number = 0;
   mensaje = '';
   exito = false;
 
@@ -45,6 +37,25 @@ export class Usuariovistacomponent {
   }
 
   comprarproductos(): void {
-    this.service.mostrar().subscribe({})
+    this.service.comprarPorId(this.id,this.cantidad).subscribe({
+      next:() => {
+
+        this.exito=true;
+        this.mensaje = 'Producto comprado correctamente.';
+        this.cargarProductos();
+        this.cd.detectChanges();
+
+
+      },
+      error: (err) => {
+        console.error(err);
+        this.exito = false;
+        this.mensaje = 'No se pudo crear el producto.';
+        this.cd.detectChanges();
+      },
+
+
+
+    });
   }
 }
