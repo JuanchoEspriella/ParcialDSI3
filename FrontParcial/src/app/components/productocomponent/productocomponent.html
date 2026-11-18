@@ -96,9 +96,11 @@
               <tr *ngFor="let p of productos">
                 <td>{{ p.nombre }}</td>
                 <td>{{ p.precio }}</td>
-                <td>{{ p.stock }}</td>
-                <td>{{ p.fechaVencimiento }}</td>
-                <td>{{ p.disponible ? 'Sí' : 'No' }}</td>
+                <td> <img
+                  [src]="p.urlImagen"
+                  [alt]="p.nombre"
+                  (error)="p.urlImagen='assets/imagen-por-defecto.png'"/>
+          </td>
               </tr>
               </tbody>
             </table>

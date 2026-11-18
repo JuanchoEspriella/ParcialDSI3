@@ -8,4 +8,5 @@ export interface producto {
   tipo:string;
   urlImagen:string;
 
+
 }
