@@ -33,13 +33,6 @@
             </div>
 
             <div class="mb-3">
-              <label for="fechaVencimiento" class="form-label">Fecha de vencimiento</label>
-              <input type="date" id="fechaVencimiento" class="form-control" formControlName="fechaVencimiento">
-              <small class="text-danger" *ngIf="form.get('fechaVencimiento')?.invalid && form.get('fechaVencimiento')?.touched">
-                La fecha de vencimiento es obligatoria.
-              </small>
-            </div>
-            <div class="mb-3">
               <label for="stock" class="form-label">ID</label>
               <input type="number" id="stock" class="form-control" formControlName="id">
               <small class="text-danger" *ngIf="form.get('id')?.invalid && form.get('id')?.touched">
@@ -60,10 +53,13 @@
               <label for="disponible" class="form-check-label">Está disponible</label>
             </div>
 
-            <select name="tipo" id="tipo">
-              <option value="fruta">Fruta</option>
-              <option value="verdura">Verdura</option>
-            </select>
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Es FRUTA o VERDURA (Solo mayusculas)?</label>
+              <input type="text" id="nombre" class="form-control" formControlName="tipo">
+              <small class="text-danger" *ngIf="form.get('tipo')?.invalid && form.get('tipo')?.touched">
+               Es obligatorio especificar el tipo
+              </small>
+            </div>
 
             <button type="submit" class="btn btn-primary w-100">Crear producto</button>
           </form>

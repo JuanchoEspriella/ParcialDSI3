@@ -17,7 +17,6 @@ export class Productocomponent implements OnInit {
     nombre: new FormControl('', Validators.required),
     precio: new FormControl(0, [Validators.required, Validators.min(1)]),
     stock: new FormControl(0, [Validators.required, Validators.min(0)]),
-    fechaVencimiento: new FormControl<Date | null>(null, Validators.required),
     disponible: new FormControl(true),
     tipo: new FormControl('', Validators.required),
     id: new FormControl(0, [Validators.required, Validators.min(1)]),
@@ -46,7 +45,6 @@ export class Productocomponent implements OnInit {
 
   guardar(): void {
     this.mensaje = '';
-
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
@@ -62,17 +60,17 @@ export class Productocomponent implements OnInit {
           nombre: '',
           precio: 0,
           stock: 0,
-          fechaVencimiento: null,
           disponible: true,
+          tipo: ''
         });
         this.cargarProductos();
-        this.cd.detectChanges();
+        this.cd.markForCheck();
       },
       error: (err) => {
         console.error(err);
         this.exito = false;
         this.mensaje = 'No se pudo crear el producto.';
-        this.cd.detectChanges();
+        this.cd.markForCheck();
       },
     });
   }
