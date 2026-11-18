@@ -1,0 +1,21 @@
+.card {
+  border: none;
+  border-radius: 12px;
+}
+
+h2,
+h5 {
+  font-weight: bold;
+  color: #212529;
+}
+
+.btn-primary {
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+
+.error {
+  color: #dc3545;
+  font-size: 13px;
+}

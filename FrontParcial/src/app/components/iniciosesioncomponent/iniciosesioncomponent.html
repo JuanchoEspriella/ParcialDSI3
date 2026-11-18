@@ -1,0 +1,58 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card shadow">
+        <div class="card-body p-4">
+
+          <div *ngIf="!service.leer('token')">
+            <h2 class="text-center mb-4">Iniciar sesión</h2>
+
+            <form [formGroup]="form" (ngSubmit)="ingresar()">
+              <div class="mb-3">
+                <label for="username" class="form-label">Usuario</label>
+                <input type="text" id="username" class="form-control" formControlName="username">
+                <small class="error" *ngIf="form.get('username')?.invalid && form.get('username')?.touched">
+                  El usuario es obligatorio.
+                </small>
+              </div>
+
+              <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" id="password" class="form-control" formControlName="password">
+                <small class="error" *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+                  La contraseña es obligatoria.
+                </small>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+            </form>
+
+            <p class="text-center mt-3 mb-0">
+              ¿No tienes cuenta? <a routerLink="/registro">Regístrate</a>
+            </p>
+          </div>
+
+          <div *ngIf="service.leer('token')" class="text-center">
+            <h2 class="mb-2">Bienvenido</h2>
+            <p class="mb-3">{{ service.leer('username') }} ({{ service.leer('rol') }})</p>
+
+            <a *ngIf="esAdmin()" routerLink="/admin" class="btn btn-primary w-100 mb-2">
+              Panel de administración
+            </a>
+
+            <a *ngIf="!esAdmin()" routerLink="/usuarios" class="btn btn-primary w-100 mb-2">
+              Ver usuarios registrados
+            </a>
+
+            <button class="btn btn-outline-danger w-100" (click)="salir()">
+              Cerrar sesión
+            </button>
+          </div>
+
+          <div *ngIf="mensaje" class="alert alert-danger mt-3 mb-0">{{ mensaje }}</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
