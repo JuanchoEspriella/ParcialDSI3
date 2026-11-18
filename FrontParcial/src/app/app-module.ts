@@ -10,6 +10,7 @@ import { Footercomponent } from './components/footercomponent/footercomponent';
 import { Admincomponent } from './components/admincomponent/admincomponent';
 import { Usuariocomponent } from './components/usuariocomponent/usuariocomponent';
 import { Productocomponent } from './components/productocomponent/productocomponent';
+
 import { Simpsoncomponent } from './components/simpsoncomponent/simpsoncomponent';
 
 import { Usuariovistacomponent } from './components/usuariovistacomponent/usuariovistacomponent';
@@ -25,8 +26,14 @@ import { Usuariovistacomponent } from './components/usuariovistacomponent/usuari
     Admincomponent,
     Usuariocomponent,
     Productocomponent,
+
     Simpsoncomponent,
-    Usuariovistacomponent
+    Usuariovistacomponent,
+
+
+    Usuariovistacomponent,
+
+
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideBrowserGlobalErrorListeners()],

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { productoservice } from '../../services/productoservice';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { producto } from '../../models/producto';
@@ -9,16 +9,18 @@ import { producto } from '../../models/producto';
   styleUrl: './usuariovistacomponent.css',
   templateUrl: './usuariovistacomponent.html',
 })
-export class Usuariovistacomponent {
+export class Usuariovistacomponent implements OnInit {
   private service = inject(productoservice);
   private cd = inject(ChangeDetectorRef);
 
-
   productos: producto[] = [];
-  cantidad:number = 0;
-  id: number = 0;
   mensaje = '';
   exito = false;
+
+  form = new FormGroup({
+    id: new FormControl<number | null>(null, [Validators.required, Validators.min(1)]),
+    cantidad: new FormControl<number>(1, [Validators.required, Validators.min(1)]),
+  });
 
   ngOnInit(): void {
     this.cargarProductos();
@@ -37,25 +39,28 @@ export class Usuariovistacomponent {
   }
 
   comprarproductos(): void {
-    this.service.comprarPorId(this.id,this.cantidad).subscribe({
-      next:() => {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
 
-        this.exito=true;
+    const id = Number(this.form.value.id);
+    const cantidad = Number(this.form.value.cantidad);
+
+    this.service.comprarPorId(id, cantidad).subscribe({
+      next: () => {
+        this.exito = true;
         this.mensaje = 'Producto comprado correctamente.';
+        this.form.reset({ id: null, cantidad: 1 });
         this.cargarProductos();
         this.cd.detectChanges();
-
-
       },
       error: (err) => {
         console.error(err);
         this.exito = false;
-        this.mensaje = 'No se pudo crear el producto.';
+        this.mensaje = 'No se pudo comprar el producto. Verifica el stock disponible.';
         this.cd.detectChanges();
       },
-
-
-
     });
   }
 }
