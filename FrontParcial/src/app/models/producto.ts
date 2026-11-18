@@ -4,5 +4,8 @@ export interface producto {
   stock : number;
   fechaVencimiento : Date;
   disponible: boolean;
+  id:number;
+  tipo:string;
+  urlImagen:string;
 
 }

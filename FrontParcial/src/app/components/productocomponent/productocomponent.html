@@ -1,7 +1,7 @@
 <div class="container py-5">
   <div class="row">
 
-    <!-- COLUMNA IZQUIERDA: FORMULARIO -->
+
     <div class="col-12 col-lg-4 mb-4">
       <div class="card shadow">
         <div class="card-body p-4">
@@ -39,11 +39,31 @@
                 La fecha de vencimiento es obligatoria.
               </small>
             </div>
+            <div class="mb-3">
+              <label for="stock" class="form-label">ID</label>
+              <input type="number" id="stock" class="form-control" formControlName="id">
+              <small class="text-danger" *ngIf="form.get('id')?.invalid && form.get('id')?.touched">
+                Debe meter su ID del producto
+              </small>
+            </div>
+
+            <div class="mb-3">
+              <label for="nombre" class="form-label">URL de la imagen de su producto</label>
+              <input type="text" id="nombre" class="form-control" formControlName="urlImagen">
+              <small class="text-danger" *ngIf="form.get('urlImagen')?.invalid && form.get('urlImagen')?.touched">
+               La url es obligatoria para ver su producto
+              </small>
+            </div>
 
             <div class="mb-3 form-check">
               <input type="checkbox" id="disponible" class="form-check-input" formControlName="disponible">
               <label for="disponible" class="form-check-label">Está disponible</label>
             </div>
+
+            <select name="tipo" id="tipo">
+              <option value="fruta">Fruta</option>
+              <option value="verdura">Verdura</option>
+            </select>
 
             <button type="submit" class="btn btn-primary w-100">Crear producto</button>
           </form>
