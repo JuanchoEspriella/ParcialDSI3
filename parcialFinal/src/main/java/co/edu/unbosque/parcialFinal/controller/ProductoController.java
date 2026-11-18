@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import co.edu.unbosque.parcialFinal.dto.ProductoDTO;
 import co.edu.unbosque.parcialFinal.service.ProductoService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/api/productos")
