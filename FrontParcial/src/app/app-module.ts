@@ -12,6 +12,9 @@ import { Usuariocomponent } from './components/usuariocomponent/usuariocomponent
 import { Productocomponent } from './components/productocomponent/productocomponent';
 import { Simpsoncomponent } from './components/simpsoncomponent/simpsoncomponent';
 
+import { Usuariovistacomponent } from './components/usuariovistacomponent/usuariovistacomponent';
+
+
 @NgModule({
   declarations: [
     App,
@@ -23,6 +26,7 @@ import { Simpsoncomponent } from './components/simpsoncomponent/simpsoncomponent
     Usuariocomponent,
     Productocomponent,
     Simpsoncomponent,
+    Usuariovistacomponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideBrowserGlobalErrorListeners()],
