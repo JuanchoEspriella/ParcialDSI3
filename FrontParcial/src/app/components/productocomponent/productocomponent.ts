@@ -14,6 +14,7 @@ export class Productocomponent implements OnInit {
   private cd = inject(ChangeDetectorRef);
 
   form = new FormGroup({
+    id: new FormControl(0, [Validators.required, Validators.min(1)]),
     nombre: new FormControl('', Validators.required),
     precio: new FormControl(0, [Validators.required, Validators.min(1)]),
     stock: new FormControl(0, [Validators.required, Validators.min(0)]),
@@ -42,7 +43,6 @@ export class Productocomponent implements OnInit {
     });
   }
 
-
   guardar(): void {
     this.mensaje = '';
 
@@ -53,6 +53,7 @@ export class Productocomponent implements OnInit {
 
     const p = this.form.value as producto;
 
+    console.log(p);
     this.service.crear(p).subscribe({
       next: () => {
         this.exito = true;
@@ -61,6 +62,7 @@ export class Productocomponent implements OnInit {
           nombre: '',
           precio: 0,
           stock: 0,
+          tipo: '',
           disponible: true,
         });
         this.cargarProductos();
