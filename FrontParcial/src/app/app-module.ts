@@ -10,7 +10,11 @@ import { Footercomponent } from './components/footercomponent/footercomponent';
 import { Admincomponent } from './components/admincomponent/admincomponent';
 import { Usuariocomponent } from './components/usuariocomponent/usuariocomponent';
 import { Productocomponent } from './components/productocomponent/productocomponent';
+<<<<<<< Updated upstream
 import { Simpsoncomponent } from './components/simpsoncomponent/simpsoncomponent';
+=======
+import { Usuariovistacomponent } from './components/usuariovistacomponent/usuariovistacomponent';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { Simpsoncomponent } from './components/simpsoncomponent/simpsoncomponent
     Admincomponent,
     Usuariocomponent,
     Productocomponent,
+<<<<<<< Updated upstream
     Simpsoncomponent,
+=======
+    Usuariovistacomponent,
+>>>>>>> Stashed changes
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideBrowserGlobalErrorListeners()],
