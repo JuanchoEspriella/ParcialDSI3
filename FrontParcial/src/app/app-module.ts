@@ -9,6 +9,7 @@ import { Navbarcomponent } from './components/navbarcomponent/navbarcomponent';
 import { Footercomponent } from './components/footercomponent/footercomponent';
 import { Admincomponent } from './components/admincomponent/admincomponent';
 import { Usuariocomponent } from './components/usuariocomponent/usuariocomponent';
+import { Productocomponent } from './components/productocomponent/productocomponent';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { Usuariocomponent } from './components/usuariocomponent/usuariocomponent
     Footercomponent,
     Admincomponent,
     Usuariocomponent,
+    Productocomponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideBrowserGlobalErrorListeners()],
