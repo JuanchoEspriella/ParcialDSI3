@@ -12,7 +12,7 @@ export class productoservice {
 
 
   crear(p: producto): Observable<string> {
-    return this.http.post(this.url + '/create', p, { headers: this.headers(), responseType: 'text' });
+    return this.http.post(this.url + '/crear', p, { headers: this.headers(), responseType: 'text' });
   }
 
   mostrar(): Observable<producto[]> {
