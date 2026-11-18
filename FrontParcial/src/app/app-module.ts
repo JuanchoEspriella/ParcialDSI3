@@ -10,11 +10,10 @@ import { Footercomponent } from './components/footercomponent/footercomponent';
 import { Admincomponent } from './components/admincomponent/admincomponent';
 import { Usuariocomponent } from './components/usuariocomponent/usuariocomponent';
 import { Productocomponent } from './components/productocomponent/productocomponent';
-<<<<<<< Updated upstream
 import { Simpsoncomponent } from './components/simpsoncomponent/simpsoncomponent';
-=======
+
 import { Usuariovistacomponent } from './components/usuariovistacomponent/usuariovistacomponent';
->>>>>>> Stashed changes
+
 
 @NgModule({
   declarations: [
@@ -26,11 +25,8 @@ import { Usuariovistacomponent } from './components/usuariovistacomponent/usuari
     Admincomponent,
     Usuariocomponent,
     Productocomponent,
-<<<<<<< Updated upstream
     Simpsoncomponent,
-=======
-    Usuariovistacomponent,
->>>>>>> Stashed changes
+    Usuariovistacomponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideBrowserGlobalErrorListeners()],
