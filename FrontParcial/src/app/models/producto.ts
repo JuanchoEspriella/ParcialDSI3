@@ -3,6 +3,6 @@ export interface producto {
   precio: number;
   stock : number;
   fechaVencimiento : Date;
-  isDisponible: boolean;
+  disponible: boolean;
 
 }
