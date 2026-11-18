@@ -1,18 +1,16 @@
 package co.edu.unbosque.parcialFinal.service;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import co.edu.unbosque.parcialFinal.dto.ProductoDTO;
 import co.edu.unbosque.parcialFinal.model.Producto;
 import co.edu.unbosque.parcialFinal.repository.ProductoRespository;
-import co.edu.unbosque.springfirstapp.dto.NoticiaDTO;
-import co.edu.unbosque.springfirstapp.model.Noticia;
+
 
 @Service
 public class ProductoService {
@@ -44,7 +42,6 @@ public class ProductoService {
 		return productoReposileche.findAll();
 	}
 	
-	@Override
 	public int updateById(Long id, ProductoDTO newData) {
 	    Optional<Producto> found = productoReposileche.findById(id);
 	    Optional<Producto> newFound = productoReposileche.findByNombre(newData.getNombre());
@@ -54,7 +51,7 @@ public class ProductoService {
 	      temp.setNombre(newData.getNombre());
 	      temp.setStock(newData.getStock());
 	      temp.setDisponible(newData.isDisponible());
-	      temp.setUrl(newData.getUrl());
+	      temp.setUrl(newData.getUrlImagen());
 	      if (newData.getTipo() != null) {
 	          temp.setTipo(newData.getTipo());
 	        }
