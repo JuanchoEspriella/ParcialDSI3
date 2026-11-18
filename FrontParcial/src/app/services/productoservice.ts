@@ -25,13 +25,19 @@ export class productoservice {
     return new HttpHeaders({ Authorization: 'Bearer ' + localStorage.getItem('token') });
   }
 
-  comprarPorId (id:number,producto : producto): Observable<producto> {
-    return this.http.put<producto>(this.url + '/comprar/{id}/{cantidad}' + id, producto, { headers: this.headers() });
+
+
+  comprarPorId(id: number, cantidad:number): Observable<producto> {
+    return this.http.put<producto>(this.url + '/comprar/{id}/{cantidad}' + id, cantidad, {
+      headers: this.headers(),
+    });
   }
-  actualizarPorId (id:number,producto:producto):Observable<producto> {
-    return this.http.put<producto>(this.url + '/update/{id}' + id,producto, { headers: this.headers() });
+  actualizarPorId(id: number): Observable<producto> {
+    return this.http.put<producto>(this.url + '/update/{id}' + id, {
+      headers: this.headers(),
+    });
   }
-  eliminarPorId (id:number):Observable<void> {
+  eliminarPorId(id: number): Observable<void> {
     return this.http.delete<void>(this.url + '/delete/{id}' + id);
   }
 
