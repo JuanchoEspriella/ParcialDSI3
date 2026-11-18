@@ -12,7 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name = "")
+@Table (name = "productoquiz")
 public class Producto {
 	
 	
@@ -32,7 +32,6 @@ public class Producto {
 	@Enumerated
 	private Tipo tipo;
 
-	private boolean disponible;
 
 	
 	public Producto() {
@@ -87,6 +86,15 @@ public class Producto {
 		this.url = url;
 	}
 
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+
+	
 	
 	
 
