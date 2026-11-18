@@ -90,6 +90,7 @@
                 <th>Stock</th>
                 <th>Vencimiento</th>
                 <th>Disponible</th>
+                <th>ID</th>
               </tr>
               </thead>
               <tbody>
@@ -101,7 +102,9 @@
                   [alt]="p.nombre"
                   (error)="p.urlImagen='assets/imagen-por-defecto.png'"/>
           </td>
+                <td>{{ p.id }}</td>
               </tr>
+
               </tbody>
             </table>
           </div>
