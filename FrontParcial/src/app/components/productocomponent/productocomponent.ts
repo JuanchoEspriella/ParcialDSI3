@@ -10,7 +10,6 @@ import { productoservice } from '../../services/productoservice';
   templateUrl: './productocomponent.html',
 })
 export class Productocomponent implements OnInit {
-
   private service = inject(productoservice);
   private cd = inject(ChangeDetectorRef);
 
@@ -20,6 +19,9 @@ export class Productocomponent implements OnInit {
     stock: new FormControl(0, [Validators.required, Validators.min(0)]),
     fechaVencimiento: new FormControl<Date | null>(null, Validators.required),
     disponible: new FormControl(true),
+    tipo: new FormControl('', Validators.required),
+    id: new FormControl(0, [Validators.required, Validators.min(1)]),
+    urlImagen: new FormControl('', Validators.required),
   });
 
   productos: producto[] = [];
