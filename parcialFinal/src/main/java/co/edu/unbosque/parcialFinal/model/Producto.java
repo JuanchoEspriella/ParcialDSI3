@@ -2,15 +2,17 @@ package co.edu.unbosque.parcialFinal.model;
 
 import java.time.LocalDate;
 
+import co.edu.unbosque.parcialFinal.model.enums.Tipo;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name = "productovichs")
+@Table (name = "")
 public class Producto {
 	
 	
@@ -25,8 +27,13 @@ public class Producto {
 	
 	private double precio;
 	private int stock;
-	private LocalDate fechaVencimiento;
 	private boolean disponible;
+	private String url;
+	@Enumerated
+	private Tipo tipo;
+
+	private boolean disponible;
+
 	
 	public Producto() {
 		// TODO Auto-generated constructor stub
@@ -64,14 +71,6 @@ public class Producto {
 		this.stock = stock;
 	}
 
-	public LocalDate getFechaVencimiento() {
-		return fechaVencimiento;
-	}
-
-	public void setFechaVencimiento(LocalDate fechaVencimiento) {
-		this.fechaVencimiento = fechaVencimiento;
-	}
-
 	public boolean isDisponible() {
 		return disponible;
 	}
@@ -80,6 +79,15 @@ public class Producto {
 		this.disponible = disponible;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	
 	
 
 	
