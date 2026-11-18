@@ -1,0 +1,56 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card shadow">
+        <div class="card-body p-4">
+          <h2 class="text-center mb-4">Crear cuenta</h2>
+
+          <form [formGroup]="form" (ngSubmit)="guardar()">
+            <div class="mb-3">
+              <label for="username" class="form-label">Nombre</label>
+              <input type="text" id="username" class="form-control" formControlName="nombre">
+              <small class="error" *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched">
+                El nombre del producto es obligatorio.
+              </small>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Stock</label>
+              <input type="text" id="password" class="form-control" formControlName="stock">
+              <small class="error" *ngIf="form.get('stock')?.touched">
+                Debe registrar el stock a ofrecer
+              </small>
+            </div>
+
+            <div class="mb-3">
+              <label for="confirmar" class="form-label">Precio</label>
+              <input type="text" id="confirmar" class="form-control" formControlName="precio">
+              <small class="error" *ngIf="form.get('precio')?.touched">
+
+              </small>
+            </div>
+            <div class="mb-3">
+              <label for="username" class="form-label">Fecha de vencimiento</label>
+              <input type="text" id="username" class="form-control" formControlName="fechaVencimiento">
+              <small class="error" *ngIf="form.get('fechaVencimiento')?.touched">
+                El nombre del producto es obligatorio.
+              </small>
+            </div>
+            <div class="mb-3">
+              <label for="username" class="form-label">Esta disponible</label>
+              <input type="text" id="username" class="form-control" formControlName="disponible">
+              <small class="error" *ngIf="form.get('disponible')?.invalid && form.get('disponible')?.touched">
+                El nombre del producto es obligatorio.
+              </small>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Crear producto</button>
+          </form>
+
+
+          <div *ngIf="mensaje" class="alert alert-danger mt-3 mb-0">{{ mensaje }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

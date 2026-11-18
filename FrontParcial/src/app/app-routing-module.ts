@@ -4,6 +4,7 @@ import { Iniciosesioncomponent } from './components/iniciosesioncomponent/inicio
 import { Registercomponent } from './components/registercomponent/registercomponent';
 import { Admincomponent } from './components/admincomponent/admincomponent';
 import { Usuariocomponent } from './components/usuariocomponent/usuariocomponent';
+import { Productocomponent} from './components/productocomponent/productocomponent';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'registro', component: Registercomponent },
   { path: 'admin', component: Admincomponent },
   { path: 'usuarios', component: Usuariocomponent },
+  { path: 'productos', component: Productocomponent },
   { path: '**', redirectTo: 'inicio' },
 ];
 
