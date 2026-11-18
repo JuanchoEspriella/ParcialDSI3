@@ -12,11 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-<<<<<<< Updated upstream
-@Table (name = "productos")
-=======
 @Table (name = "")
->>>>>>> Stashed changes
 public class Producto {
 	
 	
@@ -31,16 +27,13 @@ public class Producto {
 	
 	private double precio;
 	private int stock;
-<<<<<<< Updated upstream
-	private LocalDate fechaVencimiento;
-	private boolean isDisponible;
-=======
 	private boolean disponible;
 	private String url;
-	
 	@Enumerated
 	private Tipo tipo;
->>>>>>> Stashed changes
+
+	private boolean disponible;
+
 	
 	public Producto() {
 		// TODO Auto-generated constructor stub
@@ -79,11 +72,11 @@ public class Producto {
 	}
 
 	public boolean isDisponible() {
-		return isDisponible;
+		return disponible;
 	}
 
-	public void setDisponible(boolean isDisponible) {
-		this.isDisponible = isDisponible;
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
 	}
 
 	public String getUrl() {
@@ -95,6 +88,8 @@ public class Producto {
 	}
 
 	
+	
+
 	
 	
 
