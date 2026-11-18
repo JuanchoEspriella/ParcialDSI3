@@ -45,7 +45,6 @@ export class Productocomponent implements OnInit {
 
   guardar(): void {
     this.mensaje = '';
-
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
@@ -64,15 +63,16 @@ export class Productocomponent implements OnInit {
           stock: 0,
           tipo: '',
           disponible: true,
+          tipo: ''
         });
         this.cargarProductos();
-        this.cd.detectChanges();
+        this.cd.markForCheck();
       },
       error: (err) => {
         console.error(err);
         this.exito = false;
         this.mensaje = 'No se pudo crear el producto.';
-        this.cd.detectChanges();
+        this.cd.markForCheck();
       },
     });
   }
